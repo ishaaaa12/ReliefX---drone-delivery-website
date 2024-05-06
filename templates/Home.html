@@ -1,0 +1,254 @@
+<!doctypehtml>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Maqsad</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="{{url_for('static',filename='getLocation.js')}}">
+        </script>
+        <style>
+            .navbar {
+                background-color: white; /* Change navbar background color to white */
+            }
+            .navbar-nav .nav-link {
+                color: black; 
+                font-size: 1.25rem; /* Increase text size */
+                font-family: 'Jersey 25', sans-serif; /* Change font style */
+                font-weight: bold; /* Make text bold */
+            }
+            /* Styling for the outline buttons in the navbar */
+            .navbar .btn-outline-success,
+            .navbar .btn-outline-primary {
+                border-color: white; /* Change border color to white */
+                color: lightblue; /* Change button text color to light blue */
+            }
+            .full-width-image {
+                width: 100%; /* Makes the image full-width */
+                height: auto; /* Maintains the aspect ratio */
+                display: block; /* Removes any extra space below the image */
+                padding: 0;
+                margin: 0; /* Removes default margin to ensure it fits exactly */
+            }
+            /* Styling for the horizontal block */
+            .horizontal-block {
+                background-color: lightblue; /* Set background color to lightblue */
+                padding: 10px; /* Add padding */
+                border-radius: 5px; /* Add border radius */
+                display: flex; /* Use flexbox for layout */
+                justify-content: center; /* Center the buttons */
+                gap: 10px; /* Add gap between the buttons */
+                
+            }
+            
+        
+            .block {
+                background-color: white; /* Set block background to white */
+                padding: 10px; /* Add padding */
+                text-align: center; /* Center content */
+                border-radius: 5px; /* Add rounded corners */
+                transition: transform 0.2s; /* Add transition for hover effect */
+                cursor: pointer; /* Cursor as pointer for clickable blocks */
+            }
+            
+            .block-button:hover{
+                transform: scale(1.05);
+            }
+            .btn-lightblue:hover{
+                background-color:lightgrey;
+            }
+            .block-button {
+                margin-top: 20px; /* Add margin above button */
+                color: white; /* Set text color to blue */
+                border: none; /* Remove button border */
+                background-color:orange;
+                height:50px;
+            
+            }
+            .btn-lightblue {
+                background-color: white; /* Set background color to white */
+                color: black; /* Set text color to lightblue */
+                padding: 5px 10px; /* Decrease padding */
+                font-size: 1.3rem; /* Decrease font size */
+                height:70px;
+                margin-top: 100px;
+            }
+            .last{
+                background-color: black; /* Set background color to black */
+                color: white; /* Set text color to white */
+                padding: 10px; /* Add padding */
+                border-radius: 5px; /* Add border radius */
+                display: flex; /* Use flexbox for layout */
+                justify-content:space-between;
+                align-items: center; /* Center the content vertically */
+            }
+            .last h5, .last p, .last a {
+                color: white; /* Set text color to white */
+            }
+            
+            /* Styling for the links */
+            .last a {
+                text-decoration: none; /* Remove underline */
+                transition: color 0.3s; /* Smooth color transition for hover effect */
+            }
+            
+            .last a:hover {
+                color: lightgray; /* Change link color on hover */
+            }
+            
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href='#'> <img src="{{url_for('static',filename='relief-removebg-preview.png')}}" alt='Logo' height='100px' width='100px'></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('Home')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('About')}}">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('Services')}}">Services</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{{url_for('medicine')}}">Medicines</a></li>
+                      <li><a class="dropdown-item" href="{{url_for('grocery')}}">Groceries</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                  
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('support')}}">Support</a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <!-- Search icon -->
+                <form class="d-flex me-3">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                <!-- Cart icon -->
+                <a href="#" class="btn btn-outline-primary me-3">
+                    <i class="bi bi-cart"></i>
+                </a>
+                <!-- Login option -->
+                <a href="{{url_for('login')}}" class="btn btn-primary">Login</a>
+                <li class="nav-item">
+                    <button onclick="getlocation()">Get location</button>
+                </li>
+            </div>
+              </div>
+            </div>
+          </nav>
+          <div>
+        <img src="{{url_for('static',filename='dds.jpg')}}" alt="Explore"width="3000" class="full-width-image">
+          </div>
+          <div class="container mt-4">
+            <div class="row">
+                <!-- First image and text -->
+                <div class="col-md-4 d-flex">
+                    <img src="{{url_for('static',filename='drone.jpg')}}" alt="Image 1" class="img-fluid me-3" width='170px' height='10px'>
+                    <div>
+                        <h5>Fast Delivery</h5>
+                        <p>Equipped with high-speed motors and aerodynamic design to ensure quick delivery</p>
+                    </div>
+                </div>
+                
+                <!-- Second image and text -->
+                <div class="col-md-4 d-flex">
+                    <img src="{{url_for('static',filename='drone cost effective.jpg')}}" alt="Image 2" class="img-fluid me-3" width='150px'height="10px">
+                    <div>
+                        <h5>Cost Effective</h5>
+                        <p>Utilize affordable yet durable materials and components to minimize costs</p>
+                    </div>
+                </div>
+                
+                <!-- Third image and text -->
+                <div class="col-md-4 d-flex">
+                    <img src="{{url_for('static',filename='drone-meds-feature.jpg')}}" alt="Image 3" class="img-fluid me-3" width='150px'>
+                    <div>
+                        <h5>Environment Friendly</h5>
+                        <p>Drones eliminate the carbon emissions associated with car-based deliveries, contributing to cleaner air and a smaller carbon footprint</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <h4>Top Picks</h4>
+            </div>
+    
+            <!-- Horizontal block with buttons -->
+            <div class="horizontal-block mt-3">
+                <!-- Two blocks to the left of the Medicine button -->
+                <div class="block">
+                    <img src="{{url_for('static',filename='first aid kit.jpg')}}" alt="Image" class="img-fluid"width='200px' >
+                    <h6>First Aid Kit</h6>
+                    <p>Rs. 200</p>
+                    <button class="block-button">Add To Cart</button>
+                </div>
+                <div class="block">
+                        <img src="{{url_for('static',filename='insulin kit.jpg')}}" alt="Image" class="img-fluid" width='200px'>
+                        <h6>Insulin Kit</h6>
+                        <p>Rs. 400</p>
+                        <button class="block-button" >Add To Cart</button>
+                </div>
+    
+                <!-- Medicine button with left arrow -->
+                <a class="btn btn-lightblue" href="{{url_for('medicine')}}">
+                    <i class="bi bi-arrow-left"></i> Medicine
+                </a>
+    
+                <!-- Groceries button with right arrow -->
+                <a class="btn btn-lightblue" href="{{url_for('grocery')}}">
+                    <i class="bi bi-arrow-right"></i> Groceries
+                </a>
+                <div class="block">
+                    <img src="{{url_for('static',filename='rice.jpg')}}" alt="Image" class="img-fluid" width='200px'height='200px'>
+                    <h6>Rice (2 kg) </h6>
+                    <p>Rs.50</p>
+                    <button class="block-button" >Add To Cart</button>
+                </div>
+                <div class="block">
+                        <img src="{{url_for('static',filename='emergency-food.jpg')}}" alt="Image" class="img-fluid"width='200px' height='200px'>
+                        <h6>Emergency Food Pack</h6>
+                        <p>Rs.200</p>
+                        <button class="block-button" >Add To Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="last mt-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <img src="{{url_for('static',filename='logo.png')}}" alt="Logo" class="img-fluid" width='200px'>
+                </div>
+                <div class="col-md-6">
+                    <ul class="link-list">
+                        <li><a href="">Terms & Conditions</a></li>
+                        <li><a href="page2.html">Privacy Policy</a></li>
+                        <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+                        <li><a href="page4.html">Support Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+        <!-- <script src="./ip-script.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        </body>
+    </html>
